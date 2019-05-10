@@ -95,7 +95,7 @@ void steno_init() {
 void steno_set_mode(steno_mode_t new_mode) {
   steno_clear_state();
   mode = new_mode;
-  eeprom_update_byte(EECONFIG_STENOMODE, mode);
+  //eeprom_update_byte(EECONFIG_STENOMODE, mode);
 }
 
 /* override to intercept chords right before they get sent.
