@@ -32,6 +32,10 @@ What to with, e.g., large center keys? Duplicate "\" key on bottom-left row?
 #define KC_PSE KC_PAUSE
 #define KC_PSCR KC_PSCREEN
 
+#define ST_GEMN QK_STENO_GEMINI
+#define ST_TXBT QK_STENO_BOLT
+
+
 
 enum custom_keycodes {
   NKRO_ON = SAFE_RANGE,
@@ -317,18 +321,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [STENO] = LAYOUT_ergodox(
   // left hand
-  XXXXXXX,         XXXXXXX,     XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  ST_GEMN,         XXXXXXX,     XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX,         STN_N1,      STN_N2,        STN_N3,  STN_N4,  STN_N5,  XXXXXXX,
-  XXXXXXX,         STN_S1,      STN_TL,        STN_PL,  STN_HL,  STN_ST1, XXXXXXX,
-  XXXXXXX,         STN_S2,      STN_KL,        STN_WL,  STN_RL,  STN_ST2,
+  XXXXXXX,         STN_S1,      STN_TL,        STN_PL,  STN_HL,  STN_ST1,
+  XXXXXXX,         STN_S2,      STN_KL,        STN_WL,  STN_RL,  STN_ST2, XXXXXXX,
   XXXXXXX,         XXXXXXX,     XXXXXXX,       XXXXXXX, XXXXXXX,
                                                                  XXXXXXX, XXXXXXX,
                                                                           XXXXXXX,
                                                         STN_A,   STN_O,   XXXXXXX,
   // right hand
-  XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX,        XXXXXXX,
+  XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX,        ST_TXBT,
   XXXXXXX,      STN_N6,  STN_N7,  STN_N8,  STN_N9,      STN_NA,         STN_NB,
-                STN_ST3, STN_FR,  STN_PR,  STN_LR,      STN_TR,         STN_DR,         
+                STN_ST3, STN_FR,  STN_PR,  STN_LR,      STN_TR,         STN_DR,
   MO(COMMAND),  STN_ST4, STN_RR,  STN_BR,  STN_GR,      STN_SR,         STN_ZR,
   XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX,      XXXXXXX,
@@ -360,8 +364,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // left hand
   _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   _______,
   _______, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE, _______,
-  _______, KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,
-  KC_CAPS, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, _______,
+  KC_CAPS, KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,
+  _______, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, _______,
   _______, KC_INS,  KC_PSE,  KC_PSCR, _______,
                                                _______, _______,
                                                         _______,
@@ -422,7 +426,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   uint8_t action_layer;
   uint32_t new_layer_state;
-  
+
   if (record->event.pressed) {
     switch (keycode) {
     case NKRO_ON:
