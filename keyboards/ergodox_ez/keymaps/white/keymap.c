@@ -19,12 +19,9 @@ What to with, e.g., large center keys? Duplicate "\" key on bottom-left row?
 #define QWERTY 0
 #define COLEMAK_DH 1
 #define WORKMAN 2
-#define NORMAN 3
-#define CARPALX_QGMLWB 4
-#define MALTRON 5
-#define STENO 6
-#define SYMB 7 // symbols
-#define COMMAND 8
+#define STENO 3
+#define SYMB 4 // symbols
+#define COMMAND 5
 
 
 // Key aliases
@@ -174,131 +171,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_PGUP,
   KC_PGDN, KC_DEL, KC_BSPC
 ),
-/* Keymap 2: NORMAN
- *
- * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |   =    |   1  |   2  |   3  |   4  |   5  | Esc  |           | Num  |   6  |   7  |   8  |   9  |   0  |   -    |
- * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |   \    |   Q  |   W  |   D  |   F  |   K  |  L1  |           |  [   |   J  |   U  |   R  |   L  |   ;  |   ]    |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | Tab    |   A  |   S  |   E  |   T  |   G  |------|           |------|   Y  |   N  |   I  |   O  |   H  |   '    |
- * |--------+------+------+------+------+------|MO(L7)|           | Meh  |------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   P  |   M  |   ,  |   .  |   /  | RShift |
- * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | LGui |   `  |   \  | Left | Right|                                       |Left  | Down |  Up  | Right| RGui |
- *   `----------------------------------'                                       `----------------------------------'
- *                                        ,-------------.       ,---------------.
- *                                        | Ctrl | Alt  |       | Alt  |  Ctrl  |
- *                                 ,------|------|------|       |------+--------+------.
- *                                 |      |      | Home |       | PgUp |        |      |
- *                                 | Space|Enter |------|       |------|  Del   | Bkspc|
- *                                 |      |      | End  |       | PgDn |        |      |
- *                                 `--------------------'       `----------------------'
- */
-[NORMAN] = LAYOUT_ergodox(
-  // left hand
-  KC_EQL,          KC_1,        KC_2,          KC_3,    KC_4,    KC_5,    KC_ESC,
-  KC_BSLS,         KC_Q,        KC_W,          KC_D,    KC_F,    KC_K,    KC_NO,
-  KC_TAB,          KC_A,        KC_S,          KC_E,    KC_T,    KC_G,
-  KC_LSFT,         KC_Z,        KC_X,          KC_C,    KC_V,    KC_B,    MO(SYMB),
-  KC_LGUI,         KC_GRV,      KC_BSLS,       KC_LEFT, KC_RGHT,
-                                                                 KC_LCTL, KC_LALT,
-                                                                          KC_HOME,
-                                                         KC_SPC, KC_ENT,  KC_END,
-  // right hand
-  TG(SYMB),     KC_6,    KC_7,    KC_8,    KC_9,              KC_0,           KC_MINS,
-  KC_LBRC,      KC_J,    KC_U,    KC_R,    KC_L,              KC_SCLN,        KC_RBRC,
-                KC_Y,    KC_N,    KC_I,    KC_O,              KC_H,           KC_QUOT,
-  MO(COMMAND),  KC_P,    KC_M,    KC_COMM, KC_DOT,            KC_SLSH,        KC_RSFT,
-  KC_LEFT,      KC_DOWN, KC_UP,   KC_RGHT, KC_RGUI,
-  KC_RALT, KC_RCTL,
-  KC_PGUP,
-  KC_PGDN, KC_DEL, KC_BSPC
-),
-/* Keymap 3: CARPALX-QGMLWB
- *
- * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |   =    |   1  |   2  |   3  |   4  |   5  | Esc  |           | Num  |   6  |   7  |   8  |   9  |   0  |   -    |
- * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |   \    |   Q  |   G  |   M  |   L  |   W  |  L1  |           |  [   |   B  |   Y  |   U  |   V  |   ;  |   ]    |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | Tab    |   D  |   S  |   T  |   N  |   R  |------|           |------|   I  |   A  |   E  |   O  |   H  |   '    |
- * |--------+------+------+------+------+------|MO(L7)|           | Meh  |------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   F  |   J  |      |           |      |   K  |   P  |   ,  |   .  |   /  | RShift |
- * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | LGui |   `  |   \  | Left | Right|                                       |Left  | Down |  Up  | Right| RGui |
- *   | LGui |   `  |   \  | Left | Right|                                       |  Up  | Down |   [  |   ]  | RGui |
- *   `----------------------------------'                                       `----------------------------------'
- *                                        ,-------------.       ,---------------.
- *                                        | Ctrl | Alt  |       | Alt  |  Ctrl  |
- *                                 ,------|------|------|       |------+--------+------.
- *                                 |      |      | Home |       | PgUp |        |      |
- *                                 | Space|Enter |------|       |------|  Del   | Bkspc|
- *                                 |      |      | End  |       | PgDn |        |      |
- *                                 `--------------------'       `----------------------'
- */
-[CARPALX_QGMLWB] = LAYOUT_ergodox(
-  // left hand
-  KC_EQL,          KC_1,        KC_2,          KC_3,    KC_4,    KC_5,    KC_ESC,
-  KC_BSLS,         KC_Q,        KC_G,          KC_M,    KC_L,    KC_W,    KC_NO,
-  KC_TAB,          KC_D,        KC_S,          KC_T,    KC_N,    KC_R,
-  KC_LSFT,         KC_Z,        KC_X,          KC_C,    KC_F,    KC_J,    MO(SYMB),
-  KC_LGUI,         KC_GRV,      KC_BSLS,       KC_LEFT, KC_RGHT,
-                                                                 KC_LCTL, KC_LALT,
-                                                                          KC_HOME,
-                                                         KC_SPC, KC_ENT,  KC_END,
-  // right hand
-  TG(SYMB),     KC_6,    KC_7,    KC_8,    KC_9,              KC_0,           KC_MINS,
-  KC_LBRC,      KC_B,    KC_Y,    KC_U,    KC_V,              KC_SCLN,        KC_RBRC,
-                KC_I,    KC_A,    KC_E,    KC_O,              KC_H,           KC_QUOT,
-  MO(COMMAND),  KC_K,    KC_P,    KC_COMM, KC_DOT,            KC_SLSH,        KC_RSFT,
-  KC_LEFT,      KC_DOWN, KC_UP,   KC_RGHT, KC_RGUI,
-  KC_RALT, KC_RCTL,
-  KC_PGUP,
-  KC_PGDN, KC_DEL, KC_BSPC
-),
-/* Keymap 4: MALTRON
- *
- * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |   =    |   1  |   2  |   3  |   4  |   5  | Esc  |           | Num  |   6  |   7  |   8  |   9  |   0  | Bkspc  |
- * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |   \    |   Q  |   P  |   Y  |   C  |   B  |  L1  |           |  [   |   V  |   M  |   U  |   Z  |   L  |   ]    |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | Tab    |   A  |   N  |   I  |   S  |   F  |------|           |------|   D  |   T  |   H  |   O  |   R  |   '    |
- * |--------+------+------+------+------+------|MO(L7)|           | Meh  |------+------+------+------+------+--------|
- * | LShift |   ,  |   .  |   J  |   G  |   ;  |      |           |      |   /  |   W  |   K  |   -  |   X  | RShift |
- * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | LGui |   `  |   \  | Left | Right|                                       |Left  | Down |  Up  | Right| RGui |
- *   `----------------------------------'                                       `----------------------------------'
- *                                        ,-------------.       ,---------------.
- *                                        | Ctrl | Alt  |       | Alt  |  Ctrl  |
- *                                 ,------|------|------|       |------+--------+------.
- *                                 |      |      | Home |       | PgUp |        |      |
- *                                 |Space |Enter |------|       |------|  Del   |  E   |
- *                                 |      |      | End  |       | PgDn |        |      |
- *                                 `--------------------'       `----------------------'
- */
-[MALTRON] = LAYOUT_ergodox(
-  // left hand
-  KC_EQL,          KC_1,        KC_2,          KC_3,    KC_4,    KC_5,    KC_ESC,
-  KC_BSLS,         KC_Q,        KC_P,          KC_Y,    KC_C,    KC_B,    KC_NO,
-  KC_TAB,          KC_A,        KC_N,          KC_I,    KC_S,    KC_F,
-  KC_LSFT,         KC_COMM,     KC_DOT,        KC_J,    KC_G,    KC_SCLN, MO(SYMB),
-  KC_LGUI,         KC_GRV,      KC_BSLS,       KC_LEFT, KC_RGHT,
-                                                                 KC_LCTL, KC_LALT,
-                                                                          KC_HOME,
-                                                         KC_SPC, KC_ENT,  KC_END,
-  // right hand
-  TG(SYMB),     KC_6,    KC_7,    KC_8,    KC_9,              KC_0,           KC_BSPC,
-  KC_LBRC,      KC_V,    KC_M,    KC_U,    KC_Z,              KC_L,           KC_RBRC,
-                KC_D,    KC_T,    KC_H,    KC_O,              KC_R,           KC_QUOT,
-  MO(COMMAND),  KC_SLSH, KC_W,    KC_K,    KC_MINS,           KC_X,           KC_RSFT,
-  KC_LEFT,      KC_DOWN, KC_UP,   KC_RGHT, KC_RGUI,
-  KC_RALT, KC_RCTL,
-  KC_PGUP,
-  KC_PGDN, KC_DEL, KC_E
-),
-/* Keymap 5: STENO
+/* Keymap 3: STENO
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
@@ -339,7 +212,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX,
   XXXXXXX,      STN_E,   STN_U
 ),
-/* Keymap ??: Symbol Layer
+/* Keymap 4: Symbol Layer
 
  * ,---------------------------------------------------.           ,--------------------------------------------------.
  * |         |  F1  |  F2  |  F3  |  F4  |  F5  |      |           | Num  |  F6  |  F7  |  F8  |  F9  |  F10 |   F11  |
@@ -380,7 +253,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,
   _______, _______, _______
 ),
-/* Keymap 7: COMMAND
+/* Keymap 5: COMMAND
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |DF(0) | DF(1)| DF(2)| DF(3)| DF(4)|      |           |      |      |      |      |      |      |        |
@@ -403,7 +276,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [COMMAND] = LAYOUT_ergodox(
   // left hand
-  XXXXXXX, TO(0),   TO(1),   TO(2),   TO(3),   TO(4),   XXXXXXX,
+  XXXXXXX, TO(0),   TO(1),   TO(2),   TO(3),   XXXXXXX,   XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
@@ -412,7 +285,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         XXXXXXX,
                                       XXXXXXX, XXXXXXX, XXXXXXX,
   // right hand
-  XXXXXXX, TO(5),   TO(6),   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, NKRO_ON, NKRO_OFF,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
