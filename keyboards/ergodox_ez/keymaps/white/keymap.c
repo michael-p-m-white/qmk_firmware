@@ -59,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|MO(L7)|           | Meh  |------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | LGui |   `  |   \  | Left | Right|                                       |Left  | Down |  Up  | Right| RGui |
+ *   | LGui |   `  |Insert|Pause |PScrn |                                       |Left  | Down |  Up  | Right| RGui |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,---------------.
  *                                        | Ctrl | Alt  |       | Alt  |  Ctrl  |
@@ -71,11 +71,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [QWERTY] = LAYOUT_ergodox(
   // left hand
+                          //_______, KC_INS,  KC_PSE,  KC_PSCR, _______,
   KC_EQL,          KC_1,        KC_2,          KC_3,    KC_4,    KC_5,    KC_ESC,
   KC_BSLS,         KC_Q,        KC_W,          KC_E,    KC_R,    KC_T,    KC_NO,
   KC_TAB,          KC_A,        KC_S,          KC_D,    KC_F,    KC_G,
   KC_LSFT,         KC_Z,        KC_X,          KC_C,    KC_V,    KC_B,    MO(SYMB),
-  KC_LGUI,         KC_GRV,      KC_BSLS,       KC_LEFT, KC_RGHT,
+  KC_LGUI,         KC_GRV,      KC_INS,        KC_PSE,  KC_PSCR,
                                                                  KC_LCTL, KC_LALT,
                                                                           KC_HOME,
                                                          KC_SPC, KC_ENT,  KC_END,
@@ -100,7 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|MO(L7)|           | Meh  |------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   D  |   V  |      |           |      |   M  |   H  |   ,  |   .  |   /  | RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | LGui |   `  |   \  | Left | Right|                                       |Left  | Down |  Up  | Right| RGui |
+ *   | LGui |   `  |Insert|Pause |Pscrn |                                       |Left  | Down |  Up  | Right| RGui |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,---------------.
  *                                        | Ctrl | Alt  |       | Alt  |  Ctrl  |
@@ -116,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_BSLS,         KC_Q,        KC_W,          KC_F,    KC_P,    KC_B,    KC_NO,
   KC_TAB,          KC_A,        KC_R,          KC_S,    KC_T,    KC_G,
   KC_LSFT,         KC_Z,        KC_X,          KC_C,    KC_D,    KC_V,    MO(SYMB),
-  KC_LGUI,         KC_GRV,      KC_BSLS,       KC_LEFT, KC_RGHT,
+  KC_LGUI,         KC_GRV,      KC_INS,        KC_PSE,  KC_PSCR,
                                                                  KC_LCTL, KC_LALT,
                                                                           KC_HOME,
                                                          KC_SPC, KC_ENT,  KC_END,
@@ -141,7 +142,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|MO(L7)|           | Meh  |------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   M  |   C  |   V  |      |           |      |   K  |   L  |   ,  |   .  |   /  | RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | LGui |   `  |   \  | Left | Right|                                       |Left  | Down |  Up  | Right| RGui |
+ *   | LGui |   `  |Insert|Pause |PScrn |                                       |Left  | Down |  Up  | Right| RGui |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,---------------.
  *                                        | Ctrl | Alt  |       | Alt  |  Ctrl  |
@@ -157,7 +158,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_BSLS,         KC_Q,        KC_D,          KC_R,    KC_W,    KC_B,    KC_NO,
   KC_TAB,          KC_A,        KC_S,          KC_H,    KC_T,    KC_G,
   KC_LSFT,         KC_Z,        KC_X,          KC_M,    KC_C,    KC_V,    MO(SYMB),
-  KC_LGUI,         KC_GRV,      KC_BSLS,       KC_LEFT, KC_RGHT,
+  KC_LGUI,         KC_GRV,      KC_INS,        KC_PSE,  KC_PSCR,
                                                                  KC_LCTL, KC_LALT,
                                                                           KC_HOME,
                                                          KC_SPC, KC_ENT,  KC_END,
