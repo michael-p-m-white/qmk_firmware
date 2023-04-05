@@ -104,9 +104,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┤           ├──────┼──────┼──────┼──────┼──────┼──────┼────────┤
  * │   \    │   Q  │   W  │   F  │   P  │   B  │      │           │  [   │   J  │   L  │   U  │   Y  │   ;  │   ]    │
  * ├────────┼──────┼──────┼──────┼──────┼──────┤      │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
- * │ Tab    │   A  │   R  │   S  │   T  │   G  ├──────┤           ├──────┤   K  │   N  │   E  │   I  │   O  │   '    │
+ * │ Tab    │   A  │   R  │   S  │   T  │   G  ├──────┤           ├──────┤   M  │   N  │   E  │   I  │   O  │   '    │
  * ├────────┼──────┼──────┼──────┼──────┼──────┤MO(L4)│           │MO(L5)├──────┼──────┼──────┼──────┼──────┼────────┤
- * │ LShift │   Z  │   X  │   C  │   D  │   V  │      │           │      │   M  │   H  │   ,  │   .  │   /  │ RShift │
+ * │ LShift │   Z  │   X  │   C  │   D  │   V  │      │           │      │   K  │   H  │   ,  │   .  │   /  │ RShift │
  * ╰─┬──────┼──────┼──────┼──────┼──────┼──────┴──────╯           ╰──────┴──────┼──────┼──────┼──────┼──────┼──────┬─╯
  *   │ LGui │   `  │Insert│Pause │PScrn │                                       │Left  │ Down │  Up  │ Right│ RGui │
  *   ╰──────┴──────┴──────┴──────┴──────╯                                       ╰──────┴──────┴──────┴──────┴──────╯
@@ -131,8 +131,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // right hand
   TG(SYMB),     KC_6,    KC_7,    KC_8,    KC_9,              KC_0,           KC_MINS,
   KC_LBRC,      KC_J,    KC_L,    KC_U,    KC_Y,              KC_SCLN,        KC_RBRC,
-                KC_K,    KC_N,    KC_E,    KC_I,              KC_O,           KC_QUOT,
-  MO(COMMAND),  KC_M,    KC_H,    KC_COMM, KC_DOT,            KC_SLSH,        KC_RSFT,
+                KC_M,    KC_N,    KC_E,    KC_I,              KC_O,           KC_QUOT,
+  MO(COMMAND),  KC_K,    KC_H,    KC_COMM, KC_DOT,            KC_SLSH,        KC_RSFT,
   KC_LEFT,      KC_DOWN, KC_UP,   KC_RGHT, KC_RGUI,
   KC_RALT, KC_RCTL,
   KC_PGUP,
