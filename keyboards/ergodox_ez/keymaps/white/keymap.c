@@ -21,7 +21,14 @@ What to with, e.g., large center keys? Duplicate "\" key on bottom-left row?
 #define WORKMAN 2
 #define STENO 3
 #define SYMB 4 // symbols
-#define COMMAND 5
+#define MIRYOKU_BASE 5
+#define MIRYOKU_MEDIA 6
+#define MIRYOKU_NAV 7
+#define MIRYOKU_MOUSE 8
+#define MIRYOKU_SYMBOLS 9
+#define MIRYOKU_NUMBERS 10
+#define MIRYOKU_FUNCTIONS 11
+#define COMMAND 12
 
 
 // Key aliases
@@ -257,7 +264,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 5: COMMAND
  *
  * ╭────────┬──────┬──────┬──────┬──────┬──────┬──────╮           ╭──────┬──────┬──────┬──────┬──────┬──────┬────────╮
- * │        │ DF(0)│ DF(1)│ DF(2)│ DF(3)│ DF(4)│ Esc  │           │      │      │      │      │      │      │        │
+ * │        │ DF(0)│ DF(1)│ DF(2)│ DF(3)│ DF(4)│      │           │      │      │      │      │      │      │        │
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┤           ├──────┼──────┼──────┼──────┼──────┼──────┼────────┤
  * │        │      │      │      │      │      │      │           │      │      │      │      │      │      │        │
  * ├────────┼──────┼──────┼──────┼──────┼──────┤      │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
@@ -275,9 +282,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 │      │      │      │       │      │        │      │
  *                                 ╰──────┴──────┴──────╯       ╰──────┴────────┴──────╯
  */
+#define TO_QWER TO(QWERTY)
+#define TO_COLE TO(COLEMAK_DH)
+#define TO_WKMN TO(WORKMAN)
+#define TO_MIRY TO(MIRYOKU_BASE)
+#define TO_STEN TO(STENO)
+
 [COMMAND] = LAYOUT_ergodox(
   // left hand
-  XXXXXXX, TO(0),   TO(1),   TO(2),   TO(3),   XXXXXXX,   XXXXXXX,
+  XXXXXXX, TO_QWER, TO_COLE, TO_WKMN, TO_MIRY, TO_STEN, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
@@ -294,6 +307,220 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, XXXXXXX,
   XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX
+),
+/* Keymap 6: MIRYOKU_BASE
+ *
+ * ╭────────┬──────┬──────┬──────┬──────┬──────┬──────╮           ╭──────┬──────┬──────┬──────┬──────┬──────┬────────╮
+ * │        │      │      │      │      │      │      │           │      │      │      │      │      │      │        │
+ * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┤           ├──────┼──────┼──────┼──────┼──────┼──────┼────────┤
+ * │        │   Q  │   W  │   E  │   R  │   T  │      │           │      │   Y  │   U  │   I  │   O  │   P  │        │
+ * ├────────┼──────┼──────┼──────┼──────┼──────┤      │           │      ├──────┼──────┼──────┼──────┼──────┼────────┤
+ * │ Tab    │   A  │   S  │   D  │   F  │   G  ├──────┤           ├──────┤   H  │   J  │   K  │   L  │   ;  │   '    │
+ * ├────────┼──────┼──────┼──────┼──────┼──────┤      │           │MO(L5)├──────┼──────┼──────┼──────┼──────┼────────┤
+ * │ LShift │   Z  │   X  │   C  │   V  │   B  │      │           │      │   N  │   M  │   ,  │   .  │   /  │ RShift │
+ * ╰─┬──────┼──────┼──────┼──────┼──────┼──────┴──────╯           ╰──────┴──────┼──────┼──────┼──────┼──────┼──────┬─╯
+ *   │      │      │      │      │      │                                       │      │      │      │      │      │
+ *   ╰──────┴──────┴──────┴──────┴──────╯                                       ╰──────┴──────┴──────┴──────┴──────╯
+ *                                        ╭──────┬──────╮       ╭──────┬────────╮
+ *                                        │      │      │       │      │        │
+ *                                 ╭──────┼──────┼──────│       ├──────┼────────┼──────╮
+ *                                 │      │      │      │       │      │        │      │
+ *                                 │      │      ├──────┤       ├──────┤        │      │
+ *                                 │      │      │      │       │      │        │      │
+ *                                 ╰──────┴──────┴──────╯       ╰──────┴────────┴──────╯
+ */
+#define TMED LT(MIRYOKU_MEDIA, KC_ESC)
+#define TNAV LT(MIRYOKU_NAV, KC_SPC)
+#define TMSE LT(MIRYOKU_MOUSE, KC_TAB)
+#define TSYM LT(MIRYOKU_SYMBOLS, KC_ENT)
+#define TNUM LT(MIRYOKU_NUMBERS, KC_BSPC)
+#define TFUN LT(MIRYOKU_FUNCTIONS, KC_DEL)
+
+#define TOMBASE TO(MIRYOKU_BASE)
+#define TOMED   TO(MIRYOKU_MEDIA)
+#define TONAV   TO(MIRYOKU_NAV)
+#define TOMSE   TO(MIRYOKU_MOUSE)
+#define TOSYM   TO(MIRYOKU_SYMBOLS)
+#define TONUM   TO(MIRYOKU_NUMBERS)
+#define TOFUN   TO(MIRYOKU_FUNCTIONS)
+
+#define AGUI MT(MOD_LGUI, KC_A)
+#define SALT MT(MOD_LALT, KC_S)
+#define DCTL MT(MOD_LCTL, KC_D)
+#define FSFT MT(MOD_LSFT, KC_F)
+
+#define JSFT    MT(MOD_RSFT, KC_J)
+#define KCTL    MT(MOD_RCTL, KC_K)
+#define ELALT    MT(MOD_RALT, KC_L)
+#define SCLNGUI MT(MOD_RGUI, KC_SCLN)
+
+[MIRYOKU_BASE] = LAYOUT_ergodox(
+  // left hand
+                          //_______, KC_INS,  KC_PSE,  KC_PSCR, _______,
+  XXXXXXX,         XXXXXXX,     XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX,         KC_Q,        KC_W,          KC_E,    KC_R,    KC_T,    XXXXXXX,
+  KC_TAB,          AGUI,        SALT,          DCTL,    FSFT,    KC_G,
+  KC_LSFT,         KC_Z,        KC_X,          KC_C,    KC_V,    KC_B,    XXXXXXX,
+  XXXXXXX,         XXXXXXX,     XXXXXXX,       XXXXXXX, TMED,
+                                                                 XXXXXXX, XXXXXXX,
+                                                                          XXXXXXX,
+                                                         TNAV,   TMSE,    XXXXXXX,
+  // right hand
+  XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           XXXXXXX,        XXXXXXX,
+  XXXXXXX,      KC_Y,    KC_U,    KC_I,    KC_O,              KC_P,           XXXXXXX,
+                KC_H,    JSFT,    KCTL,    ELALT,             SCLNGUI,        KC_QUOT,
+  MO(COMMAND),  KC_N,    KC_M,    KC_COMM, KC_DOT,            KC_SLSH,        KC_RSFT,
+  TFUN,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, XXXXXXX,
+  XXXXXXX,
+  XXXXXXX, TSYM,   TNUM
+),
+#define VOLU KC_AUDIO_VOL_UP
+#define VOLD KC_AUDIO_VOL_DOWN
+#define PP   KC_MEDIA_PLAY_PAUSE
+#define STOP KC_MEDIA_STOP
+#define NEXT KC_MEDIA_NEXT_TRACK
+#define PREV KC_MEDIA_PREV_TRACK
+#define BRUP KC_BRIGHTNESS_UP
+#define BRDN KC_BRIGHTNESS_DOWN
+#define MUTE KC_AUDIO_MUTE
+[MIRYOKU_MEDIA] = LAYOUT_ergodox(
+  // left hand
+                          //_______, KC_INS,  KC_PSE,  KC_PSCR, _______,
+  XXXXXXX,         XXXXXXX,     XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX,         XXXXXXX,     XXXXXXX,       XXXXXXX, TOMBASE, XXXXXXX, XXXXXXX,
+  _______,         KC_LGUI,     KC_LALT,       KC_LCTL, KC_LSFT, XXXXXXX,
+  _______,         XXXXXXX,     XXXXXXX,       TOFUN,   TOMED,   XXXXXXX, XXXXXXX,
+  XXXXXXX,         XXXXXXX,     XXXXXXX,       XXXXXXX, XXXXXXX,
+                                                                 XXXXXXX, XXXXXXX,
+                                                                          XXXXXXX,
+                                                        XXXXXXX, XXXXXXX, XXXXXXX,
+  // right hand
+  XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           XXXXXXX,        XXXXXXX,
+  XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           XXXXXXX,        XXXXXXX,
+                KC_CAPS, PREV,    VOLD,    VOLU,              NEXT,           _______,
+  MO(COMMAND),  XXXXXXX, XXXXXXX, BRDN,    BRUP,              XXXXXXX,        _______,
+  MUTE,         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, XXXXXXX,
+  XXXXXXX,
+  XXXXXXX, STOP,   PP
+),
+[MIRYOKU_NAV] = LAYOUT_ergodox(
+  // left hand
+                          //_______, KC_INS,  KC_PSE,  KC_PSCR, _______,
+  XXXXXXX,         XXXXXXX,     XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX,         TO(0),       XXXXXXX,       XXXXXXX, TOMBASE, XXXXXXX, XXXXXXX,
+  _______,         KC_LGUI,     KC_LALT,       KC_LCTL, KC_LSFT, XXXXXXX,
+  _______,         XXXXXXX,     XXXXXXX,       TONUM,   TONAV,   XXXXXXX, XXXXXXX,
+  XXXXXXX,         XXXXXXX,     XXXXXXX,       XXXXXXX, XXXXXXX,
+                                                                 XXXXXXX, XXXXXXX,
+                                                                          XXXXXXX,
+                                                        XXXXXXX, XXXXXXX, XXXXXXX,
+  // right hand
+  XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           XXXXXXX,        XXXXXXX,
+  XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           XXXXXXX,        XXXXXXX,
+                KC_CAPS, KC_LEFT, KC_DOWN, KC_UP,             KC_RGHT,        _______,
+  MO(COMMAND),  KC_INS,  KC_HOME, KC_PGDN, KC_PGUP,           KC_END,         XXXXXXX,
+  KC_DEL,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, XXXXXXX,
+  XXXXXXX,
+  XXXXXXX, KC_ENT,   KC_BSPC
+),
+#define MS_UP  KC_MS_UP
+#define MS_DOWN KC_MS_DOWN
+#define MS_LEFT KC_MS_LEFT
+#define MS_RGHT KC_MS_RIGHT
+#define MSBTN1 KC_MS_BTN1
+#define MSBTN2 KC_MS_BTN2
+#define MSBTN3 KC_MS_BTN3
+#define MW_UP  KC_MS_WH_UP
+#define MW_DOWN KC_MS_WH_DOWN
+#define MW_LEFT KC_MS_WH_LEFT
+#define MW_RGHT KC_MS_WH_RIGHT
+
+[MIRYOKU_MOUSE] = LAYOUT_ergodox(
+  // left hand
+                          //_______, KC_INS,  KC_PSE,  KC_PSCR, _______,
+  XXXXXXX,         XXXXXXX,     XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX,         XXXXXXX,     XXXXXXX,       XXXXXXX, TOMBASE, XXXXXXX, XXXXXXX,
+  _______,         KC_LGUI,     KC_LALT,       KC_LCTL, KC_LSFT, XXXXXXX,
+  _______,         XXXXXXX,     XXXXXXX,       TOSYM,   TOMSE,   XXXXXXX, XXXXXXX,
+  XXXXXXX,         XXXXXXX,     XXXXXXX,       XXXXXXX, XXXXXXX,
+                                                                 XXXXXXX, XXXXXXX,
+                                                                          XXXXXXX,
+                                                        XXXXXXX, XXXXXXX, XXXXXXX,
+  // right hand
+  XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           XXXXXXX,        XXXXXXX,
+  XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           XXXXXXX,        XXXXXXX,
+                XXXXXXX, MS_LEFT, MS_DOWN, MS_UP,             MS_RGHT,        _______,
+  MO(COMMAND),  XXXXXXX, MW_LEFT, MW_DOWN, MW_UP,             MW_RGHT,        _______,
+  MSBTN3,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, XXXXXXX,
+  XXXXXXX,
+  XXXXXXX, MSBTN2,   MSBTN1
+),
+[MIRYOKU_NUMBERS] = LAYOUT_ergodox(
+  // left hand
+                          //_______, KC_INS,  KC_PSE,  KC_PSCR, _______,
+  XXXXXXX,         XXXXXXX,     XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX,         KC_LBRC,     KC_7,          KC_8,    KC_9,    KC_RBRC, XXXXXXX,
+  _______,         KC_QUOT,     KC_4,          KC_5,    KC_6,    KC_EQL,
+  _______,         KC_GRV,      KC_1,          KC_2,    KC_3,    KC_BSLS, XXXXXXX,
+  XXXXXXX,         XXXXXXX,     XXXXXXX,       XXXXXXX, KC_DOT,
+                                                                 XXXXXXX, XXXXXXX,
+                                                                          XXXXXXX,
+                                                        KC_0,    KC_MINS, XXXXXXX,
+  // right hand
+  XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           XXXXXXX,        XXXXXXX,
+  XXXXXXX,      XXXXXXX, TOMBASE, XXXXXXX, XXXXXXX,           XXXXXXX,        XXXXXXX,
+                XXXXXXX, KC_RSFT, KC_RCTL, KC_RALT,           KC_RGUI,        _______,
+  MO(COMMAND),  XXXXXXX, TONUM,   TONAV,   XXXXXXX,           XXXXXXX,        _______,
+  XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, XXXXXXX,
+  XXXXXXX,
+  XXXXXXX, XXXXXXX,   XXXXXXX
+),
+[MIRYOKU_SYMBOLS] = LAYOUT_ergodox(
+  // left hand
+                          //_______, KC_INS,  KC_PSE,  KC_PSCR, _______,
+  XXXXXXX,         XXXXXXX,     XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX,         KC_LCBR,     KC_AMPR,       KC_ASTR, KC_LPRN, KC_RCBR, XXXXXXX,
+  _______,         KC_DQT,      KC_DLR,        KC_PERC, KC_CIRC, KC_PLUS,
+  _______,         KC_TILDE,    KC_EXLM,       KC_AT,   KC_HASH, KC_PIPE, XXXXXXX,
+  XXXXXXX,         XXXXXXX,     XXXXXXX,       XXXXXXX, KC_LPRN,
+                                                                 XXXXXXX, XXXXXXX,
+                                                                          XXXXXXX,
+                                                        KC_RPRN, KC_UNDS, XXXXXXX,
+  // right hand
+  XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           XXXXXXX,        XXXXXXX,
+  XXXXXXX,      XXXXXXX, TOMBASE, XXXXXXX, XXXXXXX,           XXXXXXX,        XXXXXXX,
+                XXXXXXX, KC_RSFT, KC_RCTL, KC_RALT,           KC_RGUI,        _______,
+  MO(COMMAND),  XXXXXXX, TOSYM,   TOMSE,   XXXXXXX,           XXXXXXX,        _______,
+  XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, XXXXXXX,
+  XXXXXXX,
+  XXXXXXX, XXXXXXX,   XXXXXXX
+),
+[MIRYOKU_FUNCTIONS] = LAYOUT_ergodox(
+  // left hand
+                          //_______, KC_INS,  KC_PSE,  KC_PSCR, _______,
+  XXXXXXX,         XXXXXXX,     XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX,         KC_F12,      KC_F7,         KC_F8,   KC_F9,   KC_PSCR, XXXXXXX,
+  _______,         KC_F11,      KC_F4,         KC_F5,   KC_F6,   KC_SLCK,
+  _______,         KC_F10,      KC_F1,         KC_F2,   KC_F3,   KC_PSE,  XXXXXXX,
+  XXXXXXX,         XXXXXXX,     XXXXXXX,       XXXXXXX, KC_LPRN,
+                                                                 XXXXXXX, XXXXXXX,
+                                                                          XXXXXXX,
+                                                        KC_SPC,  KC_TAB,  XXXXXXX,
+  // right hand
+  XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           XXXXXXX,        XXXXXXX,
+  XXXXXXX,      XXXXXXX, TOMBASE, XXXXXXX, XXXXXXX,           XXXXXXX,        XXXXXXX,
+                XXXXXXX, KC_RSFT, KC_RCTL, KC_RALT,           KC_RGUI,        _______,
+  MO(COMMAND),  XXXXXXX, TOFUN,   TOMED,   XXXXXXX,           XXXXXXX,        _______,
+  XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, XXXXXXX,
+  XXXXXXX,
+  XXXXXXX, XXXXXXX,   XXXXXXX
 ),
 };
 
