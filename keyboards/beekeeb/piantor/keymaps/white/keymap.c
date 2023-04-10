@@ -111,7 +111,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 [MIRYOKU_NAV]=LAYOUT_split_3x6_3(
   // left hand                                                                      // right hand                                                 
-  _______, XXXXXXX, XXXXXXX, XXXXXXX, TOMBASE, TO_STEN,                                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+  QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, TOMBASE, TO_STEN,                                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
   _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                                      KC_CAPS, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______,
   _______, XXXXXXX, XXXXXXX, TONUM,   TONAV,   XXXXXXX,                                      KC_INS,  KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______,
                                       XXXXXXX, XXXXXXX, XXXXXXX,                    KC_ENT,  KC_BSPC, KC_DEL                                      
