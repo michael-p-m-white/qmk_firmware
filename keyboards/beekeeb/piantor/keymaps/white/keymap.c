@@ -402,6 +402,22 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   }
 }
 
+uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
+  // Do not support "double tap to repeat tap key" for thumb layer keys.
+  // This should allow for quicker use of thumb layers.
+  switch (keycode) {
+  case TMED:
+  case TNAV:
+  case TMSE:
+  case TSYM    :
+  case TNUM:
+  case TFUN:
+    return 0;
+  default:
+    return QUICK_TAP_TERM;
+  }
+}
+
 void keyboard_post_init_user(void) {
   layer_on(HOME_ROW_MODS);
 #ifdef STENO_ENABLE
