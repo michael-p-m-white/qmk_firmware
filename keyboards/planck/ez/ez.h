@@ -1,4 +1,6 @@
 /* Copyright 2018 Jack Humbert <jack.humb@gmail.com>
+ * Copyright 2015 ZSA Technology Labs Inc (@zsa)
+ * Copyright 2020 Christopher Courtney, aka Drashna Jael're  (@drashna) <drashna@live.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,93 +17,31 @@
  */
 #pragma once
 
-#include "planck.h"
+#include "quantum.h"
 
-#define LAYOUT_planck_1x2uC( \
-    k00, k01, k02, k03, k04, k05, k06, k07, k08, k09, k0a, k0b, \
-    k10, k11, k12, k13, k14, k15, k16, k17, k18, k19, k1a, k1b, \
-    k20, k21, k22, k23, k24, k25, k26, k27, k28, k29, k2a, k2b, \
-    k30, k31, k32, k33, k34,    k35,   k36, k37, k38, k39, k3a \
-) \
-{ \
-    { k00, k01, k02, k03, k04, k05 }, \
-    { k10, k11, k12, k13, k14, k15 }, \
-    { k20, k21, k22, k23, k24, k25 }, \
-    { k30, k31, k32, k39, k3a, k3b }, \
-    { k06, k07, k08, k09, k0a, k0b }, \
-    { k16, k17, k18, k19, k1a, k1b }, \
-    { k26, k27, k28, k29, k2a, k2b }, \
-    { k36, k37, k38, k33, k34, k35 } \
-}
+void planck_ez_right_led_on(void);
+void planck_ez_right_led_off(void);
+void planck_ez_right_led_level(uint8_t level);
+void planck_ez_left_led_on(void);
+void planck_ez_left_led_off(void);
+void planck_ez_left_led_level(uint8_t level);
 
-#define LAYOUT_planck_1x2uR( \
-    k00, k01, k02, k03, k04, k05, k06, k07, k08, k09, k0a, k0b, \
-    k10, k11, k12, k13, k14, k15, k16, k17, k18, k19, k1a, k1b, \
-    k20, k21, k22, k23, k24, k25, k26, k27, k28, k29, k2a, k2b, \
-    k30, k31, k32, k33, k34, k35,   k36,    k37, k38, k39, k3a \
-) \
-{ \
-    { k00, k01, k02, k03, k04, k05 }, \
-    { k10, k11, k12, k13, k14, k15 }, \
-    { k20, k21, k22, k23, k24, k25 }, \
-    { k30, k31, k32, k39, k3a, k3b }, \
-    { k06, k07, k08, k09, k0a, k0b }, \
-    { k16, k17, k18, k19, k1a, k1b }, \
-    { k26, k27, k28, k29, k2a, k2b }, \
-    { k36, k37, k38, k33, k34, k35 } \
-}
+enum planck_ez_keycodes {
+    LED_LEVEL = QK_KB_0,
+    TOGGLE_LAYER_COLOR,
+};
 
-#define LAYOUT_planck_1x2uL( \
-    k00, k01, k02, k03, k04, k05, k06, k07, k08, k09, k0a, k0b, \
-    k10, k11, k12, k13, k14, k15, k16, k17, k18, k19, k1a, k1b, \
-    k20, k21, k22, k23, k24, k25, k26, k27, k28, k29, k2a, k2b, \
-    k30, k31, k32, k33,   k34,    k35, k36, k37, k38, k39, k3a \
-) \
-{ \
-    { k00, k01, k02, k03, k04, k05 }, \
-    { k10, k11, k12, k13, k14, k15 }, \
-    { k20, k21, k22, k23, k24, k25 }, \
-    { k30, k31, k32, k39, k3a, k3b }, \
-    { k06, k07, k08, k09, k0a, k0b }, \
-    { k16, k17, k18, k19, k1a, k1b }, \
-    { k26, k27, k28, k29, k2a, k2b }, \
-    { k36, k37, k38, k33, k34, k35 } \
-}
+#ifndef WEBUSB_ENABLE
+#    define WEBUSB_PAIR KC_NO
+#endif
 
-#define LAYOUT_planck_2x2u( \
-    k00, k01, k02, k03, k04, k05, k06, k07, k08, k09, k0a, k0b, \
-    k10, k11, k12, k13, k14, k15, k16, k17, k18, k19, k1a, k1b, \
-    k20, k21, k22, k23, k24, k25, k26, k27, k28, k29, k2a, k2b, \
-    k30, k31, k32, k33,   k34,      k36,    k37, k38, k39, k3a \
-) \
-{ \
-    { k00, k01, k02, k03, k04, k05 }, \
-    { k10, k11, k12, k13, k14, k15 }, \
-    { k20, k21, k22, k23, k24, k25 }, \
-    { k30, k31, k32, k39, k3a, k3b }, \
-    { k06, k07, k08, k09, k0a, k0b }, \
-    { k16, k17, k18, k19, k1a, k1b }, \
-    { k26, k27, k28, k29, k2a, k2b }, \
-    { k36, k37, k38, k33, k34, k35 } \
-}
+typedef union {
+  uint32_t raw;
+  struct {
+    uint8_t      led_level :3;
+    bool         disable_layer_led   :1;
+    bool         rgb_matrix_enable   :1;
+  };
+} keyboard_config_t;
 
-#define LAYOUT_planck_grid( \
-    k00, k01, k02, k03, k04, k05, k06, k07, k08, k09, k0a, k0b, \
-    k10, k11, k12, k13, k14, k15, k16, k17, k18, k19, k1a, k1b, \
-    k20, k21, k22, k23, k24, k25, k26, k27, k28, k29, k2a, k2b, \
-    k30, k31, k32, k33, k34, k35, KC_NO, k36, k37, k38, k39, k3a \
-) \
-{ \
-    { k00, k01, k02, k03, k04, k05 }, \
-    { k10, k11, k12, k13, k14, k15 }, \
-    { k20, k21, k22, k23, k24, k25 }, \
-    { k30, k31, k32, k39, k3a, KC_NO }, \
-    { k06, k07, k08, k09, k0a, k0b }, \
-    { k16, k17, k18, k19, k1a, k1b }, \
-    { k26, k27, k28, k29, k2a, k2b }, \
-    { k36, k37, k38, k33, k34, k35 } \
-}
-
-#define KEYMAP LAYOUT_planck_grid
-#define LAYOUT_ortho_4x12 LAYOUT_planck_grid
-#define KC_LAYOUT_ortho_4x12 KC_KEYMAP
+extern keyboard_config_t keyboard_config;
